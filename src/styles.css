@@ -65,37 +65,35 @@
 :root {
   --radius: 0.5rem;
 
-  /* Superhuman-inspired palette */
+  /* Power Consult — corporate navy + teal */
   --background: oklch(1 0 0);
-  --foreground: oklch(0.22 0.01 60);
+  --foreground: oklch(0.20 0.04 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.01 60);
+  --card-foreground: oklch(0.20 0.04 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.01 60);
+  --popover-foreground: oklch(0.20 0.04 250);
 
-  /* Deep mysteria purple as primary */
-  --primary: oklch(0.20 0.06 280);
-  --primary-foreground: oklch(0.97 0.005 280);
+  /* Deep navy primary */
+  --primary: oklch(0.24 0.07 255);
+  --primary-foreground: oklch(0.98 0.005 250);
 
-  /* Warm cream secondary */
-  --secondary: oklch(0.93 0.015 75);
-  --secondary-foreground: oklch(0.22 0.01 60);
+  /* Cool gray secondary */
+  --secondary: oklch(0.96 0.008 240);
+  --secondary-foreground: oklch(0.20 0.04 250);
 
-  /* Muted with warm undertone */
-  --muted: oklch(0.955 0.008 75);
-  --muted-foreground: oklch(0.50 0.01 60);
+  --muted: oklch(0.965 0.006 240);
+  --muted-foreground: oklch(0.48 0.02 250);
 
-  /* Lavender accent */
-  --accent: oklch(0.82 0.10 290);
-  --accent-foreground: oklch(0.22 0.01 60);
+  /* Teal accent */
+  --accent: oklch(0.68 0.12 195);
+  --accent-foreground: oklch(0.15 0.04 250);
 
   --destructive: oklch(0.577 0.245 27);
   --destructive-foreground: oklch(0.985 0.002 247);
 
-  /* Warm parchment border */
-  --border: oklch(0.89 0.012 70);
-  --input: oklch(0.89 0.012 70);
-  --ring: oklch(0.82 0.10 290);
+  --border: oklch(0.91 0.01 240);
+  --input: oklch(0.91 0.01 240);
+  --ring: oklch(0.68 0.12 195);
 
   --chart-1: oklch(0.646 0.222 41);
   --chart-2: oklch(0.6 0.118 185);
@@ -103,37 +101,37 @@
   --chart-4: oklch(0.828 0.189 84);
   --chart-5: oklch(0.769 0.188 70);
 
-  --sidebar: oklch(0.98 0.005 75);
-  --sidebar-foreground: oklch(0.22 0.01 60);
-  --sidebar-primary: oklch(0.20 0.06 280);
-  --sidebar-primary-foreground: oklch(0.97 0.005 280);
-  --sidebar-accent: oklch(0.82 0.10 290);
-  --sidebar-accent-foreground: oklch(0.22 0.01 60);
-  --sidebar-border: oklch(0.89 0.012 70);
-  --sidebar-ring: oklch(0.82 0.10 290);
+  --sidebar: oklch(0.98 0.005 240);
+  --sidebar-foreground: oklch(0.20 0.04 250);
+  --sidebar-primary: oklch(0.24 0.07 255);
+  --sidebar-primary-foreground: oklch(0.98 0.005 250);
+  --sidebar-accent: oklch(0.68 0.12 195);
+  --sidebar-accent-foreground: oklch(0.15 0.04 250);
+  --sidebar-border: oklch(0.91 0.01 240);
+  --sidebar-ring: oklch(0.68 0.12 195);
 
-  /* Status colors */
+  /* Legacy tokens retained for compatibility (mapped to new palette) */
   --status-new: oklch(0.65 0.02 265);
   --status-review: oklch(0.75 0.16 85);
-  --status-planned: oklch(0.55 0.12 290);
-  --status-progress: oklch(0.55 0.15 290);
+  --status-planned: oklch(0.55 0.12 250);
+  --status-progress: oklch(0.55 0.15 250);
   --status-shipped: oklch(0.65 0.19 160);
   --status-declined: oklch(0.6 0.2 25);
-
-  /* Upvote */
   --upvote: oklch(0.50 0.01 60);
-  --upvote-active: oklch(0.20 0.06 280);
-  --upvote-active-foreground: oklch(0.97 0.005 280);
-
-  /* Vote reaction colors */
-  --vote-up: oklch(0.55 0.12 290);
+  --upvote-active: oklch(0.24 0.07 255);
+  --upvote-active-foreground: oklch(0.97 0.005 250);
+  --vote-up: oklch(0.55 0.12 250);
   --vote-down: oklch(0.60 0.20 25);
+  --cream: oklch(0.96 0.008 240);
+  --cream-foreground: oklch(0.20 0.04 250);
+  --lavender: oklch(0.68 0.12 195);
+  --hero: oklch(0.18 0.05 252);
 
-  /* Superhuman special tokens */
-  --cream: oklch(0.93 0.015 75);
-  --cream-foreground: oklch(0.22 0.01 60);
-  --lavender: oklch(0.82 0.10 290);
-  --hero: oklch(0.15 0.04 280);
+  /* Power Consult brand tokens */
+  --navy: oklch(0.24 0.07 255);
+  --navy-deep: oklch(0.18 0.05 252);
+  --teal: oklch(0.68 0.12 195);
+  --teal-soft: oklch(0.92 0.04 195);
 }
 
 @layer base {
