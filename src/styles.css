@@ -65,35 +65,35 @@
 :root {
   --radius: 0.5rem;
 
-  /* Power Consult — corporate navy + teal */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.20 0.04 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.04 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.04 250);
+  /* Sun Crete — warm Mediterranean terracotta + golden sand */
+  --background: oklch(0.97 0.012 80);
+  --foreground: oklch(0.28 0.05 55);
+  --card: oklch(0.985 0.01 80);
+  --card-foreground: oklch(0.28 0.05 55);
+  --popover: oklch(0.985 0.01 80);
+  --popover-foreground: oklch(0.28 0.05 55);
 
-  /* Deep navy primary */
-  --primary: oklch(0.24 0.07 255);
-  --primary-foreground: oklch(0.98 0.005 250);
+  /* Warm terracotta primary */
+  --primary: oklch(0.52 0.13 52);
+  --primary-foreground: oklch(0.985 0.005 80);
 
-  /* Cool gray secondary */
-  --secondary: oklch(0.96 0.008 240);
-  --secondary-foreground: oklch(0.20 0.04 250);
+  /* Light sand secondary */
+  --secondary: oklch(0.93 0.015 80);
+  --secondary-foreground: oklch(0.28 0.05 55);
 
-  --muted: oklch(0.965 0.006 240);
-  --muted-foreground: oklch(0.48 0.02 250);
+  --muted: oklch(0.90 0.015 80);
+  --muted-foreground: oklch(0.52 0.04 65);
 
-  /* Teal accent */
-  --accent: oklch(0.68 0.12 195);
-  --accent-foreground: oklch(0.15 0.04 250);
+  /* Golden sun accent */
+  --accent: oklch(0.73 0.14 78);
+  --accent-foreground: oklch(0.25 0.05 55);
 
   --destructive: oklch(0.577 0.245 27);
   --destructive-foreground: oklch(0.985 0.002 247);
 
-  --border: oklch(0.91 0.01 240);
-  --input: oklch(0.91 0.01 240);
-  --ring: oklch(0.68 0.12 195);
+  --border: oklch(0.87 0.015 80);
+  --input: oklch(0.87 0.015 80);
+  --ring: oklch(0.73 0.14 78);
 
   --chart-1: oklch(0.646 0.222 41);
   --chart-2: oklch(0.6 0.118 185);
@@ -101,16 +101,16 @@
   --chart-4: oklch(0.828 0.189 84);
   --chart-5: oklch(0.769 0.188 70);
 
-  --sidebar: oklch(0.98 0.005 240);
-  --sidebar-foreground: oklch(0.20 0.04 250);
-  --sidebar-primary: oklch(0.24 0.07 255);
-  --sidebar-primary-foreground: oklch(0.98 0.005 250);
-  --sidebar-accent: oklch(0.68 0.12 195);
-  --sidebar-accent-foreground: oklch(0.15 0.04 250);
-  --sidebar-border: oklch(0.91 0.01 240);
-  --sidebar-ring: oklch(0.68 0.12 195);
+  --sidebar: oklch(0.95 0.012 80);
+  --sidebar-foreground: oklch(0.28 0.05 55);
+  --sidebar-primary: oklch(0.52 0.13 52);
+  --sidebar-primary-foreground: oklch(0.985 0.005 80);
+  --sidebar-accent: oklch(0.73 0.14 78);
+  --sidebar-accent-foreground: oklch(0.25 0.05 55);
+  --sidebar-border: oklch(0.87 0.015 80);
+  --sidebar-ring: oklch(0.73 0.14 78);
 
-  /* Legacy tokens retained for compatibility (mapped to new palette) */
+  /* Legacy tokens mapped to Sun Crete */
   --status-new: oklch(0.65 0.02 265);
   --status-review: oklch(0.75 0.16 85);
   --status-planned: oklch(0.55 0.12 250);
@@ -118,20 +118,20 @@
   --status-shipped: oklch(0.65 0.19 160);
   --status-declined: oklch(0.6 0.2 25);
   --upvote: oklch(0.50 0.01 60);
-  --upvote-active: oklch(0.24 0.07 255);
-  --upvote-active-foreground: oklch(0.97 0.005 250);
+  --upvote-active: oklch(0.52 0.13 52);
+  --upvote-active-foreground: oklch(0.985 0.005 80);
   --vote-up: oklch(0.55 0.12 250);
   --vote-down: oklch(0.60 0.20 25);
-  --cream: oklch(0.96 0.008 240);
-  --cream-foreground: oklch(0.20 0.04 250);
-  --lavender: oklch(0.68 0.12 195);
-  --hero: oklch(0.18 0.05 252);
+  --cream: oklch(0.93 0.015 80);
+  --cream-foreground: oklch(0.28 0.05 55);
+  --lavender: oklch(0.73 0.14 78);
+  --hero: oklch(0.40 0.10 50);
 
-  /* Power Consult brand tokens */
-  --navy: oklch(0.24 0.07 255);
-  --navy-deep: oklch(0.18 0.05 252);
-  --teal: oklch(0.68 0.12 195);
-  --teal-soft: oklch(0.92 0.04 195);
+  /* Sun Crete brand tokens */
+  --navy: oklch(0.52 0.13 52);
+  --navy-deep: oklch(0.40 0.11 50);
+  --teal: oklch(0.73 0.14 78);
+  --teal-soft: oklch(0.91 0.04 78);
 }
 
 @layer base {
