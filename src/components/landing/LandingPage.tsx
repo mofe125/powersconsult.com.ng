@@ -207,16 +207,6 @@ export function LandingPage() {
                 <div><span className="block text-2xl font-bold text-foreground">95%</span>Match rate</div>
               </div>
             </div>
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[var(--teal-soft)] via-white to-[var(--navy)]/5" />
-              <img
-                src={heroImage}
-                alt="Diverse professionals collaborating in a modern office"
-                width={1280}
-                height={1024}
-                className="relative w-full rounded-[20px] border border-border bg-white shadow-xl shadow-[var(--navy)]/10"
-              />
-            </div>
           </div>
         </div>
       </section>
