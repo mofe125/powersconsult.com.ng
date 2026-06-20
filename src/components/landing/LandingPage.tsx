@@ -6,7 +6,6 @@ import {
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
 import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
-import heroImage from '@/assets/hero-professionals.jpg';
 
 const services = [
   { icon: UserPlus, title: 'Create Your Profile', body: 'Build your professional profile by adding your education, experience, skills, certifications, and career interests.' },
@@ -170,7 +169,7 @@ export function LandingPage() {
           <div className="absolute -bottom-40 -left-40 h-[420px] w-[420px] rounded-full bg-[var(--navy)]/[0.08] blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="mx-auto max-w-3xl text-center">
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-[var(--teal)]" />
@@ -179,13 +178,13 @@ export function LandingPage() {
               <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-[56px]">
                 Your Next Career <span className="text-[var(--navy)]">Opportunity</span> Starts Here
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-[1.65] text-muted-foreground sm:text-lg">
+              <p className="mx-auto mt-6 max-w-xl text-base leading-[1.65] text-muted-foreground sm:text-lg">
                 Power Consult connects exceptional talent with innovative startups, technology companies, SMEs, and leading organizations.
               </p>
-              <p className="mt-4 max-w-xl text-base leading-[1.65] text-muted-foreground">
+              <p className="mx-auto mt-4 max-w-xl text-base leading-[1.65] text-muted-foreground">
                 Create your profile, upload your CV, select multiple career interests, and get matched with opportunities that fit your skills and ambitions.
               </p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <div className="mx-auto mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <button
                   onClick={() => scrollTo('register')}
                   className="group inline-flex items-center justify-center gap-2 rounded-[8px] bg-[var(--navy)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--navy-deep)] hover:shadow-lg hover:shadow-[var(--navy)]/20"
@@ -200,23 +199,13 @@ export function LandingPage() {
                   Explore Opportunities
                 </button>
               </div>
-              <div className="mt-10 flex items-center gap-6 text-xs font-semibold text-muted-foreground">
+              <div className="mx-auto mt-10 flex items-center justify-center gap-6 text-xs font-semibold text-muted-foreground">
                 <div><span className="block text-2xl font-bold text-foreground">10k+</span>Candidates</div>
                 <div className="h-8 w-px bg-border" />
                 <div><span className="block text-2xl font-bold text-foreground">500+</span>Employers</div>
                 <div className="h-8 w-px bg-border" />
                 <div><span className="block text-2xl font-bold text-foreground">95%</span>Match rate</div>
               </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-[28px] bg-gradient-to-br from-[var(--teal-soft)] via-white to-[var(--navy)]/5" />
-              <img
-                src={heroImage}
-                alt="Diverse professionals collaborating in a modern office"
-                width={1280}
-                height={1024}
-                className="relative w-full rounded-[20px] border border-border bg-white shadow-xl shadow-[var(--navy)]/10"
-              />
             </div>
           </div>
         </div>
