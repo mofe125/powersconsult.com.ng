@@ -14,177 +14,16 @@ export type Database = {
   }
   public: {
     Tables: {
-      comments: {
-        Row: {
-          created_at: string
-          id: string
-          request_id: string
-          text: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          request_id: string
-          text: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          request_id?: string
-          text?: string
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "comments_request_id_fkey"
-            columns: ["request_id"]
-            isOneToOne: false
-            referencedRelation: "feature_requests"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      feature_requests: {
-        Row: {
-          category: string | null
-          created_at: string
-          description: string
-          id: string
-          status: string
-          submitter_id: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          category?: string | null
-          created_at?: string
-          description: string
-          id?: string
-          status?: string
-          submitter_id: string
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          category?: string | null
-          created_at?: string
-          description?: string
-          id?: string
-          status?: string
-          submitter_id?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      profiles: {
-        Row: {
-          avatar_url: string | null
-          created_at: string
-          email: string | null
-          id: string
-          name: string | null
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          avatar_url?: string | null
-          created_at?: string
-          email?: string | null
-          id?: string
-          name?: string | null
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          avatar_url?: string | null
-          created_at?: string
-          email?: string | null
-          id?: string
-          name?: string | null
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
-      user_roles: {
-        Row: {
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
-      votes: {
-        Row: {
-          created_at: string
-          id: string
-          request_id: string
-          user_id: string
-          vote_type: number
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          request_id: string
-          user_id: string
-          vote_type?: number
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          request_id?: string
-          user_id?: string
-          vote_type?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "votes_request_id_fkey"
-            columns: ["request_id"]
-            isOneToOne: false
-            referencedRelation: "feature_requests"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      get_vote_counts: {
-        Args: never
-        Returns: {
-          down_count: number
-          request_id: string
-          up_count: number
-        }[]
-      }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
+      [_ in never]: never
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -311,8 +150,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin", "moderator", "user"],
-    },
+    Enums: {},
   },
 } as const
