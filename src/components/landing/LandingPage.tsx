@@ -211,47 +211,6 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* ━━━ SERVICES ━━━ */}
-      <section id="services" className="relative py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionLabel>What we offer</SectionLabel>
-            <h2 className="text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl">
-              Everything You Need to Advance Your Career
-            </h2>
-            <p className="mt-4 text-base leading-[1.65] text-muted-foreground">
-              Whether you're searching for your first job or your next leadership role, Power Consult provides the tools and opportunities to move your career forward.
-            </p>
-          </div>
-          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <article
-                key={i}
-                className="group flex flex-col rounded-[16px] border border-border bg-white p-7 transition-all hover:-translate-y-0.5 hover:border-[var(--teal)]/50 hover:shadow-lg hover:shadow-[var(--navy)]/5"
-              >
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[10px] bg-[var(--teal-soft)] text-[var(--navy)]">
-                  <s.icon className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-bold tracking-[-0.01em] text-foreground">{s.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-[1.65] text-muted-foreground">{s.body}</p>
-                {s.tags && (
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {s.tags.map(t => (
-                      <span key={t} className="rounded-[6px] bg-secondary px-2 py-1 text-[11px] font-medium text-secondary-foreground">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <button className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--navy)] transition-colors hover:text-[var(--teal)]">
-                  Read more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                </button>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ━━━ ABOUT ━━━ */}
       <section id="about" className="relative py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-6 sm:px-8">

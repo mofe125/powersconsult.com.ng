@@ -66,7 +66,7 @@
   --radius: 0.5rem;
 
   /* Sun Crete — warm Mediterranean terracotta + golden sand */
-  --background: oklch(0.97 0.012 80);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.28 0.05 55);
   --card: oklch(0.985 0.01 80);
   --card-foreground: oklch(0.28 0.05 55);
