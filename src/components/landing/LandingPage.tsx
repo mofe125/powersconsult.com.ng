@@ -572,7 +572,7 @@ export function LandingPage() {
             <div className="relative">
               <h2 className="text-3xl font-bold tracking-[-0.02em] sm:text-4xl">Ready to Take the Next Step?</h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-[1.65] text-white/75">
-                Create your profile today and let Power Consult connect you with employers looking for talent like yours.
+                Create your profile today and let Powers Consult connect you with employers looking for talent like yours.
               </p>
               <button
                 onClick={() => scrollTo('register')}
