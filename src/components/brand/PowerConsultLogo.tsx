@@ -20,7 +20,7 @@ export function PowerConsultLogo({ size = 'md', variant = 'light', className }: 
     <div className={cn('flex items-center gap-2.5', className)}>
       <img
         src={logoAsset.url}
-        alt="Power Consult"
+        alt="Powers Consult"
         className={cn('object-contain', s.box)}
       />
       <span
@@ -30,7 +30,7 @@ export function PowerConsultLogo({ size = 'md', variant = 'light', className }: 
           onDark ? 'text-white' : 'text-foreground',
         )}
       >
-        Power<span className="text-[var(--teal)]">.</span>Consult
+        Powers<span className="text-[var(--teal)]">.</span>Consult
       </span>
     </div>
   );
