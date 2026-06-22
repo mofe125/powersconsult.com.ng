@@ -316,9 +316,9 @@ export function LandingPage() {
               <div className="rounded-[24px] bg-gradient-to-br from-[var(--navy)] to-[var(--navy-deep)] p-10 text-white shadow-xl shadow-[var(--navy)]/20">
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { k: '10,000+', v: 'Professionals onboarded' },
-                    { k: '500+', v: 'Verified employers' },
-                    { k: '40+', v: 'Industries served' },
+                    { k: '10,000+', v: 'Professionals to be onboarded' },
+                    { k: '500+', v: 'Employers to be verified' },
+                    { k: '40+', v: 'Industries to be served\u00a0' },
                     { k: '24h', v: 'Average response time' },
                   ].map((stat, i) => (
                     <div key={i} className="rounded-[12px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
