@@ -275,7 +275,7 @@ export function LandingPage() {
                 Your Next Career <span className="text-[var(--navy)]">Opportunity</span> Starts Here
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base leading-[1.65] text-muted-foreground sm:text-lg">
-                Power Consult connects exceptional talent with innovative startups, technology companies, SMEs, and leading organizations.
+                Powers Consult connects exceptional talent with innovative startups, technology companies, SMEs, and tech organizations.
               </p>
               <p className="mx-auto mt-4 max-w-xl text-base leading-[1.65] text-muted-foreground">
                 Create your profile, upload your CV, select multiple career interests, and get matched with opportunities that fit your skills and ambitions.
