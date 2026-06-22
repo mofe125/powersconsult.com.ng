@@ -330,12 +330,12 @@ export function LandingPage() {
               </div>
             </div>
             <div>
-              <SectionLabel>About Power Consult</SectionLabel>
+              <SectionLabel>ABOUT POWERS CONSULT</SectionLabel>
               <h2 className="text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl">
                 Connecting Great Talent with Great Companies
               </h2>
               <div className="mt-6 space-y-4 text-base leading-[1.65] text-muted-foreground">
-                <p>At Power Consult, we believe every talented professional deserves the right opportunity.</p>
+                <p>At Powers Consult, we believe every talented professional deserves the right opportunity.</p>
                 <p>Our recruitment platform helps candidates showcase their experience while enabling employers to discover skilled professionals quickly and efficiently.</p>
                 <p>Whether you're a fresh graduate, an experienced professional, or an executive, we're committed to helping you find opportunities where you can thrive.</p>
               </div>
