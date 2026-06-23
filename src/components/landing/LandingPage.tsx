@@ -259,11 +259,7 @@ export function LandingPage() {
       </nav>
 
       {/* ━━━ HERO ━━━ */}
-      <section className="relative overflow-hidden pt-24 sm:pt-28">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full bg-[var(--teal-soft)] opacity-60 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 h-[420px] w-[420px] rounded-full bg-[var(--navy)]/[0.08] blur-3xl" />
-        </div>
+      <section className="relative overflow-hidden bg-white pt-24 sm:pt-28">
         <div className="relative mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <div>
