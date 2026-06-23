@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_matches: {
+        Row: {
+          application_id: string
+          created_at: string
+          id: string
+          position_id: string
+          reason: string | null
+          score: number
+        }
+        Insert: {
+          application_id: string
+          created_at?: string
+          id?: string
+          position_id: string
+          reason?: string | null
+          score: number
+        }
+        Update: {
+          application_id?: string
+          created_at?: string
+          id?: string
+          position_id?: string
+          reason?: string | null
+          score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_matches_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ai_matches_position_id_fkey"
+            columns: ["position_id"]
+            isOneToOne: false
+            referencedRelation: "positions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       applications: {
         Row: {
           career_interests: string[] | null
@@ -94,6 +136,92 @@ export type Database = {
           years_of_experience?: string | null
         }
         Relationships: []
+      }
+      companies: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          industry: string | null
+          location: string | null
+          name: string
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          industry?: string | null
+          location?: string | null
+          name: string
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          industry?: string | null
+          location?: string | null
+          name?: string
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      positions: {
+        Row: {
+          company_id: string
+          created_at: string
+          description: string | null
+          id: string
+          location: string | null
+          min_years: string | null
+          required_skills: string | null
+          salary: string | null
+          status: string
+          title: string
+          updated_at: string
+          work_type: string | null
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          location?: string | null
+          min_years?: string | null
+          required_skills?: string | null
+          salary?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+          work_type?: string | null
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          location?: string | null
+          min_years?: string | null
+          required_skills?: string | null
+          salary?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+          work_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "positions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
