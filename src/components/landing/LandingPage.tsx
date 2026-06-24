@@ -263,10 +263,6 @@ export function LandingPage() {
         <div className="relative mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--teal)]" />
-                Your recruitment partner
-              </div>
               <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-[56px]">
                 Your Next Career <span className="text-[var(--navy)]">Opportunity</span> Starts Here
               </h1>
