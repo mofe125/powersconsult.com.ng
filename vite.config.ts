@@ -63,34 +63,29 @@ function devClientErrorLogger() {
         }
       };
 
-      server.ws.on(
-        "client-runtime-error",
-        (data: Record<string, string>) => {
-          const { type, message, stack, filename, lineno, colno } = data;
-          const label =
-            type === "unhandled-rejection"
-              ? "Unhandled Rejection"
-              : "Runtime Error";
-          let loc = "";
-          if (filename) {
-            loc = ` at ${filename}`;
-            if (lineno != null) loc += `:${lineno}`;
-            if (colno != null) loc += `:${colno}`;
-          }
-          server.config.logger.error(
-            `\n[client] ${label}: ${message}${loc}`,
-          );
-          if (stack) {
-            server.config.logger.error(stack);
-          }
+      server.ws.on("client-runtime-error", (data: Record<string, string>) => {
+        const { type, message, stack, filename, lineno, colno } = data;
+        const label =
+          type === "unhandled-rejection"
+            ? "Unhandled Rejection"
+            : "Runtime Error";
+        let loc = "";
+        if (filename) {
+          loc = ` at ${filename}`;
+          if (lineno != null) loc += `:${lineno}`;
+          if (colno != null) loc += `:${colno}`;
+        }
+        server.config.logger.error(`\n[client] ${label}: ${message}${loc}`);
+        if (stack) {
+          server.config.logger.error(stack);
+        }
 
-          server.ws.send({
-            type: "custom",
-            event: "client-runtime-error",
-            data,
-          });
-        },
-      );
+        server.ws.send({
+          type: "custom",
+          event: "client-runtime-error",
+          data,
+        });
+      });
     },
 
     transform(code: string, id: string) {
@@ -111,7 +106,9 @@ function devServerFnErrorLogger() {
     apply: "serve" as const,
     enforce: "pre" as const,
     configureServer(server: import("vite").ViteDevServer) {
-      (globalThis as Record<string, unknown>)[HMR_SEND_KEY] = (data: unknown) => {
+      (globalThis as Record<string, unknown>)[HMR_SEND_KEY] = (
+        data: unknown,
+      ) => {
         server.ws.send({
           type: "custom",
           event: "server-fn-error",
@@ -163,7 +160,7 @@ function devServerFnErrorLogger() {
 export default defineConfig(({ command, mode }) => {
   // Use Cloudflare Workers plugin for builds (produces worker output)
   // Skip for dev server (command=serve) since workerd runtime isn't available
-  const useCloudflare = command === "build";
+  const useCloudflare = false;
 
   // Load VITE_ env vars and define them for SSR
   // Note: loadEnv strips the prefix, so we add it back
@@ -183,7 +180,12 @@ export default defineConfig(({ command, mode }) => {
       alias: {
         "@": path.resolve(__dirname, "./src"),
       },
-      dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
+      dedupe: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
+      ],
     },
     plugins: [
       tailwindcss(),
@@ -192,7 +194,9 @@ export default defineConfig(({ command, mode }) => {
       }),
       devClientErrorLogger(),
       devServerFnErrorLogger(),
-      ...(useCloudflare ? [cloudflare({ viteEnvironment: { name: "ssr" } })] : []),
+      ...(useCloudflare
+        ? [cloudflare({ viteEnvironment: { name: "ssr" } })]
+        : []),
       tanstackStart(),
       viteReact(),
       mode === "development" && componentTagger(),
