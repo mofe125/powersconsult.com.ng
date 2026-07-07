@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import logoAsset from '@/assets/power-consult-logo.png.asset.json';
+import logoAsset from '@/assets/powers-consult-transparent.png';
 
 interface PowerConsultLogoProps {
   size?: 'sm' | 'md' | 'lg';
@@ -19,7 +19,7 @@ export function PowerConsultLogo({ size = 'md', variant = 'light', className }: 
   return (
     <div className={cn('flex items-center gap-2.5', className)}>
       <img
-        src={logoAsset.url}
+        src={logoAsset}
         alt="Powers Consult"
         className={cn('object-contain', s.box)}
       />
