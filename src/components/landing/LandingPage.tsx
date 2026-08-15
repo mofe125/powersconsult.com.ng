@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import {
   ArrowRight, UserPlus, FileUp, Sparkles, Layers, Briefcase, GraduationCap,
   ShieldCheck, BadgeCheck, Search, Bell, Check, Star, Linkedin, Mail, Phone, Loader2,
