@@ -1,12 +1,12 @@
-import { Link } from '@tanstack/react-router';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import {
-  ArrowRight, Menu, X, UserPlus, FileUp, Sparkles, Layers, Briefcase, GraduationCap,
+  ArrowRight, UserPlus, FileUp, Sparkles, Layers, Briefcase, GraduationCap,
   ShieldCheck, BadgeCheck, Search, Bell, Check, Star, Linkedin, Mail, Phone, Loader2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
 import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
+import { SiteNav } from '@/components/layout/SiteNav';
 import { supabase } from '@/integrations/supabase/client';
 
 const services = [
@@ -71,8 +71,6 @@ const inputClass =
   'w-full rounded-[8px] border border-border bg-white px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-[var(--teal)] focus:outline-none focus:ring-2 focus:ring-[var(--teal)]/20 transition-colors';
 
 export function LandingPage() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [interests, setInterests] = useState<Set<string>>(new Set());
   const [submitting, setSubmitting] = useState(false);
   const [files, setFiles] = useState<Record<string, File | null>>({
@@ -80,14 +78,7 @@ export function LandingPage() {
   });
   const formRef = useRef<HTMLFormElement>(null);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   const scrollTo = (id: string) => {
-    setMobileNavOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -180,83 +171,9 @@ export function LandingPage() {
     }
   };
 
-  const navLinks: [string, string][] = [
-    ['Services', 'services'],
-    ['About', 'about'],
-    ['How it works', 'process'],
-    ['Join', 'register'],
-  ];
-
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Nav */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'border-b border-border bg-background/85 backdrop-blur-xl' : 'bg-transparent'
-        }`}
-      >
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
-          <PowerConsultLogo size="md" />
-          <div className="hidden items-center gap-8 md:flex">
-            {navLinks.map(([label, id]) => (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {label}
-              </button>
-            ))}
-            <Link
-              to="/admin"
-              className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Admin
-            </Link>
-            <button
-              onClick={() => scrollTo('register')}
-              className="rounded-[8px] bg-[var(--navy)] px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-[var(--navy-deep)]"
-            >
-              Join Talent Pool
-            </button>
-          </div>
-          <button
-            onClick={() => setMobileNavOpen(!mobileNavOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-[8px] text-foreground md:hidden"
-            aria-label="Toggle menu"
-          >
-            {mobileNavOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-        {mobileNavOpen && (
-          <div className="border-t border-border bg-background px-6 py-4 md:hidden">
-            <div className="flex flex-col gap-1">
-              {navLinks.map(([label, id]) => (
-                <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className="rounded-[8px] px-3 py-2.5 text-left text-sm font-semibold text-foreground hover:bg-secondary"
-                >
-                  {label}
-                </button>
-              ))}
-              <Link
-                to="/admin"
-                className="rounded-[8px] px-3 py-2.5 text-left text-sm font-semibold text-foreground hover:bg-secondary"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                Admin
-              </Link>
-              <button
-                onClick={() => scrollTo('register')}
-                className="mt-2 rounded-[8px] bg-[var(--navy)] px-4 py-2.5 text-sm font-semibold text-white"
-              >
-                Join Talent Pool
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
+      <SiteNav cta={{ label: 'Join Talent Pool', onClick: () => scrollTo('register') }} />
 
       {/* ━━━ HERO ━━━ */}
       <section className="relative overflow-hidden bg-white pt-24 sm:pt-28">
