@@ -1,12 +1,12 @@
-import { Link } from '@tanstack/react-router';
 import { useState, useEffect, useRef } from 'react';
 import {
-  ArrowRight, Menu, X, UserPlus, FileUp, Sparkles, Layers, Briefcase, GraduationCap,
+  ArrowRight, UserPlus, FileUp, Sparkles, Layers, Briefcase, GraduationCap,
   ShieldCheck, BadgeCheck, Search, Bell, Check, Star, Linkedin, Mail, Phone, Loader2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
 import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
+import { SiteNav } from '@/components/layout/SiteNav';
 import { supabase } from '@/integrations/supabase/client';
 
 const services = [
@@ -71,8 +71,6 @@ const inputClass =
   'w-full rounded-[8px] border border-border bg-white px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-[var(--teal)] focus:outline-none focus:ring-2 focus:ring-[var(--teal)]/20 transition-colors';
 
 export function LandingPage() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [interests, setInterests] = useState<Set<string>>(new Set());
   const [submitting, setSubmitting] = useState(false);
   const [files, setFiles] = useState<Record<string, File | null>>({
@@ -80,14 +78,7 @@ export function LandingPage() {
   });
   const formRef = useRef<HTMLFormElement>(null);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   const scrollTo = (id: string) => {
-    setMobileNavOpen(false);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
