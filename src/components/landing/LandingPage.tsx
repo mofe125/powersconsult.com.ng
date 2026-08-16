@@ -198,7 +198,7 @@ export function LandingPage() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
                 <button
-                  onClick={() => scrollTo('services')}
+                  onClick={() => scrollTo('process')}
                   className="inline-flex items-center justify-center rounded-[8px] border border-border bg-white px-7 py-3.5 text-base font-semibold text-foreground transition-colors hover:border-[var(--teal)] hover:text-[var(--navy)]"
                 >
                   Explore Opportunities
@@ -500,7 +500,6 @@ export function LandingPage() {
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Platform</h4>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li><button onClick={() => scrollTo('services')} className="hover:text-foreground">Services</button></li>
                 <li><button onClick={() => scrollTo('process')} className="hover:text-foreground">How it works</button></li>
                 <li><button onClick={() => scrollTo('register')} className="hover:text-foreground">Join</button></li>
               </ul>
