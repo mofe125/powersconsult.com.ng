@@ -501,7 +501,6 @@ export function LandingPage() {
               <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Platform</h4>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 <li><button onClick={() => scrollTo('process')} className="hover:text-foreground">How it works</button></li>
-                <li><button onClick={() => scrollTo('process')} className="hover:text-foreground">How it works</button></li>
                 <li><button onClick={() => scrollTo('register')} className="hover:text-foreground">Join</button></li>
               </ul>
             </div>
