@@ -50,10 +50,10 @@ export function SiteNav({ cta }: { cta?: { label: string; onClick: () => void } 
             </button>
           ) : (
             <Link
-              to="/recruitment"
+              to="/consultation"
               className="rounded-[8px] bg-[var(--navy)] px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-[var(--navy-deep)]"
             >
-              Join Talent Pool
+              Book an HR Consultation
             </Link>
           )}
         </div>
@@ -90,11 +90,11 @@ export function SiteNav({ cta }: { cta?: { label: string; onClick: () => void } 
               </button>
             ) : (
               <Link
-                to="/recruitment"
+                to="/consultation"
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-[8px] bg-[var(--navy)] px-4 py-2.5 text-center text-sm font-semibold text-white"
               >
-                Join Talent Pool
+                Book an HR Consultation
               </Link>
             )}
           </div>

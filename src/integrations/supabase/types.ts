@@ -170,6 +170,51 @@ export type Database = {
         }
         Relationships: []
       }
+      consultation_requests: {
+        Row: {
+          company_name: string
+          company_size: string | null
+          created_at: string
+          current_hr_setup: string | null
+          full_name: string
+          hr_needs: string[]
+          id: string
+          industry: string | null
+          message: string | null
+          phone: string | null
+          preferred_contact: string | null
+          work_email: string
+        }
+        Insert: {
+          company_name: string
+          company_size?: string | null
+          created_at?: string
+          current_hr_setup?: string | null
+          full_name: string
+          hr_needs?: string[]
+          id?: string
+          industry?: string | null
+          message?: string | null
+          phone?: string | null
+          preferred_contact?: string | null
+          work_email: string
+        }
+        Update: {
+          company_name?: string
+          company_size?: string | null
+          created_at?: string
+          current_hr_setup?: string | null
+          full_name?: string
+          hr_needs?: string[]
+          id?: string
+          industry?: string | null
+          message?: string | null
+          phone?: string | null
+          preferred_contact?: string | null
+          work_email?: string
+        }
+        Relationships: []
+      }
       positions: {
         Row: {
           company_id: string
