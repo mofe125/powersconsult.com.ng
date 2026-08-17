@@ -1,19 +1,27 @@
 import { Link } from '@tanstack/react-router';
 import {
-  ArrowRight, ShieldCheck, FileText, PiggyBank, HeartHandshake, FolderOpen, Users,
+  ArrowRight, ShieldCheck, FileText, HeartHandshake, FolderOpen, Users,
   MonitorSmartphone, Gauge, UserPlus, ClipboardList, MessageSquare, Workflow, Compass,
-  Check, Mail, Phone, Linkedin,
+  Check, Building2, Briefcase, Layers, Cog, BookOpen, Scale, Lightbulb,
 } from 'lucide-react';
 import { SiteNav } from '@/components/layout/SiteNav';
-import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
+import { SiteFooter } from '@/components/layout/SiteFooter';
+
+const pillars = [
+  { icon: Users, title: 'People', body: 'Experienced HR professionals accountable for your workforce, acting as your HR team without sitting on your payroll.' },
+  { icon: Cog, title: 'Processes', body: 'Standardized, repeatable HR processes for hiring, onboarding, performance, exits and everyday employee matters.' },
+  { icon: MonitorSmartphone, title: 'Systems', body: 'HR information systems and technology configured around your business so records and workflows live in one place.' },
+  { icon: BookOpen, title: 'Documentation', body: 'Policies, handbooks, contracts, letters and employee records built and maintained to a professional standard.' },
+  { icon: Scale, title: 'Compliance', body: 'HR practice aligned with labour and statutory requirements, so obligations are handled deliberately, not reactively.' },
+  { icon: Lightbulb, title: 'Advisory', body: 'Ongoing guidance for founders and managers on structure, people decisions and difficult employee situations.' },
+];
 
 const functions = [
   { icon: ShieldCheck, title: 'HR compliance & regulatory requirements' },
   { icon: FileText, title: 'HR policy development & implementation' },
-  { icon: PiggyBank, title: 'Pension & employee benefits administration' },
   { icon: HeartHandshake, title: 'HMO & employee welfare coordination' },
   { icon: FolderOpen, title: 'Employee records & HR documentation' },
-  { icon: UserPlus, title: 'Staff recruitment' },
+  { icon: UserPlus, title: 'Staff recruitment & talent sourcing' },
   { icon: MonitorSmartphone, title: 'HR Information Systems (HRIS)' },
   { icon: Gauge, title: 'Performance management systems' },
   { icon: ClipboardList, title: 'Employee onboarding & offboarding' },
@@ -24,12 +32,18 @@ const functions = [
 ];
 
 const benefits = [
-  'Professional and unbiased HR policies',
-  'Standardized HR systems tailored to your business',
-  'Access to multiple HR functions through one provider',
-  'Reduced staffing costs — no need for several HR specialists',
-  'Improved compliance with labour and statutory requirements',
-  'Streamlined HR processes that scale as you grow',
+  'An HR function that exists from day one, without building a department',
+  'Independent, objective HR judgement instead of HR by whoever is available',
+  'Standardized HR systems and documentation tailored to your business',
+  'One accountable partner across every HR function',
+  'HR practice aligned with labour and statutory requirements',
+  'Infrastructure that scales as your headcount grows',
+];
+
+const notPositioning = [
+  { title: 'Not a recruitment agency', body: 'Recruitment sits inside the HR function we run for you — it is one part of the work, not the whole relationship.' },
+  { title: 'Not an HR software vendor', body: 'We use technology to run your HR properly. You get a working HR function, not a tool to operate yourself.' },
+  { title: 'Not a generic consultancy', body: 'We do not hand over a report and leave. Powers builds the HR infrastructure and stays responsible for running it.' },
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -49,29 +63,70 @@ export function HomePage() {
       <section className="bg-white pt-24 sm:pt-28">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-[56px]">
-              Your Complete <span className="text-[var(--navy)]">HR Department</span>, Fully Outsourced
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--teal)]">
+              Outsourced HR partner for startups, SMEs & growing businesses
+            </p>
+            <h1 className="text-[34px] font-bold leading-[1.06] tracking-[-0.025em] text-foreground sm:text-5xl lg:text-[58px]">
+              Your HR Department.
+              <br />
+              <span className="text-[var(--navy)]">Without the HR Department.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-[1.65] text-muted-foreground sm:text-lg">
-              Powers Consult is an outsourced Human Resources consultancy designed to function as your company's
-              complete HR department — one trusted partner overseeing every aspect of human resource management
-              through efficient systems, technology, and standardized processes.
+              Powers Consult becomes your external HR partner — responsible for building, organizing and managing the
+              HR infrastructure behind your workforce, so you can focus on running the business.
             </p>
             <div className="mx-auto mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
-                to="/recruitment"
+                to="/consultation"
                 className="group inline-flex items-center justify-center gap-2 rounded-[8px] bg-[var(--navy)] px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-[var(--navy-deep)] hover:shadow-lg hover:shadow-[var(--navy)]/20"
               >
-                Explore Recruitment
+                Book an HR Consultation
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a
-                href="#services"
+                href="#model"
                 className="inline-flex items-center justify-center rounded-[8px] border border-border bg-white px-7 py-3.5 text-base font-semibold text-foreground transition-colors hover:border-[var(--teal)] hover:text-[var(--navy)]"
               >
-                What We Do
+                See How It Works
               </a>
             </div>
+            <p className="mt-6 text-sm text-muted-foreground">
+              Looking for your next role?{' '}
+              <Link to="/recruitment" className="font-semibold text-[var(--navy)] underline underline-offset-4">
+                Join the talent pool
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* THE MODEL — six pillars */}
+      <section id="model" className="border-t border-border py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionLabel>The Powers model</SectionLabel>
+            <h2 className="text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
+              Six elements. One integrated HR function.
+            </h2>
+            <p className="mt-4 text-base leading-[1.65] text-muted-foreground">
+              Most growing businesses have pieces of HR scattered across people and spreadsheets. Powers combines
+              people, processes, systems, documentation, compliance and advisory into a single function you can rely on.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {pillars.map(p => (
+              <div
+                key={p.title}
+                className="group rounded-[16px] border border-border bg-white p-6 transition-colors hover:border-[var(--teal)]"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-[8px] bg-[var(--navy)] text-white">
+                  <p.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-lg font-bold tracking-[-0.01em]">{p.title}</h3>
+                <p className="mt-2 text-sm leading-[1.65] text-muted-foreground">{p.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -87,33 +142,46 @@ export function HomePage() {
               </h2>
               <div className="mt-6 space-y-4 text-base leading-[1.65] text-muted-foreground">
                 <p>
-                  Rather than hiring multiple HR professionals to manage different functions, Powers Consult provides
-                  an integrated solution where one trusted partner oversees every aspect of human resource management.
+                  Rather than assembling several HR professionals to cover different functions, Powers Consult takes
+                  responsibility for the whole HR function — designed, documented and managed as one system.
                 </p>
                 <p>
-                  Our goal is to enable business owners — particularly startups and small to medium-sized businesses —
-                  to focus on growing their companies while we handle the complexities of managing their workforce.
+                  We work with startups, SMEs and growing businesses whose workforce has outgrown informal HR, but who
+                  do not need — or want — an internal HR department to get it right.
                 </p>
                 <p>
-                  Business owners only need to focus on running their businesses. Powers Consult manages everything
-                  related to their employees.
+                  Business owners focus on running the business. Powers Consult builds and runs everything behind the
+                  employees.
                 </p>
               </div>
+              <Link
+                to="/consultation"
+                className="mt-8 inline-flex items-center gap-2 rounded-[8px] bg-[var(--navy)] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--navy-deep)]"
+              >
+                Book an HR Consultation <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
             <div className="rounded-[24px] bg-gradient-to-br from-[var(--navy)] to-[var(--navy-deep)] p-10 text-white shadow-xl shadow-[var(--navy)]/20">
-              <div className="grid grid-cols-2 gap-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--teal)]">
+                What the partnership covers
+              </p>
+              <ul className="mt-6 space-y-4">
                 {[
-                  { k: '13+', v: 'Core HR functions covered' },
-                  { k: '1', v: 'Integrated service provider' },
-                  { k: 'SME', v: 'Startups & growing businesses' },
-                  { k: '24h', v: 'Average response time' },
-                ].map((stat, i) => (
-                  <div key={i} className="rounded-[12px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
-                    <p className="text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">{stat.k}</p>
-                    <p className="mt-1 text-xs text-white/70">{stat.v}</p>
-                  </div>
+                  { icon: Layers, k: 'One integrated function', v: 'People, processes, systems, documentation, compliance and advisory under one partner.' },
+                  { icon: Building2, k: 'Built for your business', v: 'HR infrastructure designed around your size, structure and how you actually operate.' },
+                  { icon: Briefcase, k: 'Recruitment included', v: 'Hiring support sits inside the wider HR function when you need to grow the team.' },
+                ].map(item => (
+                  <li key={item.k} className="flex items-start gap-4 rounded-[12px] border border-white/10 bg-white/[0.04] p-5">
+                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[8px] bg-[var(--teal)] text-[var(--navy)]">
+                      <item.icon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold">{item.k}</p>
+                      <p className="mt-1 text-xs leading-[1.6] text-white/70">{item.v}</p>
+                    </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
@@ -124,13 +192,13 @@ export function HomePage() {
         <div className="mx-auto max-w-6xl px-6 sm:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--teal)]">
-              What Powers Consult does
+              What we manage
             </p>
             <h2 className="text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
-              Your External Human Resources Department
+              The HR Infrastructure Behind Your Workforce
             </h2>
             <p className="mt-4 text-base leading-[1.65] text-white/70">
-              We serve as your company's HR department by managing all core HR functions.
+              We build and manage the core HR functions your business needs to operate professionally as it grows.
             </p>
           </div>
           <div className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -149,8 +217,26 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* POSITIONING CLARITY */}
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionLabel>Where we fit</SectionLabel>
+            <h2 className="text-3xl font-bold tracking-[-0.02em] sm:text-4xl">An HR Partner, Not a Point Solution</h2>
+          </div>
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {notPositioning.map(n => (
+              <div key={n.title} className="rounded-[16px] border border-border bg-white p-7">
+                <h3 className="text-base font-bold tracking-[-0.01em] text-[var(--navy)]">{n.title}</h3>
+                <p className="mt-3 text-sm leading-[1.65] text-muted-foreground">{n.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* VALUE PROPOSITION */}
-      <section id="value" className="py-20 sm:py-28">
+      <section id="value" className="border-t border-border py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-6 sm:px-8">
           <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-20">
             <div>
@@ -161,11 +247,12 @@ export function HomePage() {
               <div className="mt-6 space-y-4 text-base leading-[1.65] text-muted-foreground">
                 <p>
                   In many small businesses, HR responsibilities are handled by administrative or operations staff.
-                  Powers Consult provides independent, objective HR management instead.
+                  Decisions become inconsistent, records go unmanaged and obligations get missed. Powers Consult
+                  provides independent, objective HR management instead.
                 </p>
                 <p>
-                  Rather than employing separate personnel for payroll, compliance, HR administration, performance
-                  management, and employee records, businesses receive all these services through one integrated solution.
+                  Rather than employing separate personnel for compliance, HR administration, performance management
+                  and employee records, your business receives all of it through one integrated HR function.
                 </p>
               </div>
             </div>
@@ -188,67 +275,56 @@ export function HomePage() {
 
       {/* CTA */}
       <section className="pb-20 sm:pb-24">
-        <div className="mx-auto max-w-5xl px-6 sm:px-8">
-          <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[var(--navy)] to-[var(--navy-deep)] p-10 text-center text-white sm:p-16">
-            <div className="pointer-events-none absolute -top-20 right-0 h-80 w-80 rounded-full bg-[var(--teal)]/20 blur-3xl" />
-            <div className="relative">
-              <h2 className="text-3xl font-bold tracking-[-0.02em] sm:text-4xl">Let Us Handle HR While You Grow</h2>
-              <p className="mx-auto mt-4 max-w-xl text-base leading-[1.65] text-white/75">
-                Talk to us about running your HR end to end — or join our talent pool if you're looking for your next role.
-              </p>
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a
-                  href="mailto:hello@powersconsult.com"
-                  className="inline-flex items-center gap-2 rounded-[8px] bg-[var(--teal)] px-8 py-3.5 text-base font-bold text-[var(--navy-deep)] transition-all hover:bg-white"
-                >
-                  Talk to Us <ArrowRight className="h-4 w-4" />
-                </a>
+        <div className="mx-auto max-w-6xl px-6 sm:px-8">
+          <div className="mx-auto mb-10 max-w-2xl text-center">
+            <SectionLabel>Two ways to work with us</SectionLabel>
+            <h2 className="text-3xl font-bold tracking-[-0.02em] sm:text-4xl">Which describes you?</h2>
+          </div>
+          <div className="grid gap-4 lg:grid-cols-2">
+            <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-[var(--navy)] to-[var(--navy-deep)] p-9 text-white sm:p-11">
+              <div className="pointer-events-none absolute -top-20 right-0 h-72 w-72 rounded-full bg-[var(--teal)]/20 blur-3xl" />
+              <div className="relative">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--teal)]">
+                  For businesses
+                </p>
+                <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] sm:text-3xl">
+                  I need an HR function for my company
+                </h3>
+                <p className="mt-4 text-sm leading-[1.7] text-white/75">
+                  For business owners, founders and management teams who want their HR built, organized and managed by
+                  one accountable partner.
+                </p>
                 <Link
-                  to="/recruitment"
-                  className="inline-flex items-center gap-2 rounded-[8px] border border-white/25 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-white/10"
+                  to="/consultation"
+                  className="mt-8 inline-flex items-center gap-2 rounded-[8px] bg-[var(--teal)] px-7 py-3.5 text-base font-bold text-[var(--navy-deep)] transition-all hover:bg-white"
                 >
-                  Join Talent Pool
+                  Book an HR Consultation <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
+            </div>
+            <div className="rounded-[24px] border border-border bg-white p-9 sm:p-11">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--teal)]">
+                For professionals
+              </p>
+              <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] sm:text-3xl">
+                I am looking for my next role
+              </h3>
+              <p className="mt-4 text-sm leading-[1.7] text-muted-foreground">
+                Join the Powers talent pool so your profile is considered when we recruit on behalf of the businesses
+                whose HR we manage.
+              </p>
+              <Link
+                to="/recruitment"
+                className="mt-8 inline-flex items-center gap-2 rounded-[8px] border border-border px-7 py-3.5 text-base font-semibold text-foreground transition-colors hover:border-[var(--teal)] hover:text-[var(--navy)]"
+              >
+                Join Talent Pool <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-6xl px-6 py-12 sm:px-8">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            <div>
-              <PowerConsultLogo size="md" />
-              <p className="mt-4 max-w-xs text-sm leading-[1.65] text-muted-foreground">
-                Outsourced HR consultancy serving as your complete human resources department.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Navigate</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/" className="hover:text-foreground">Home</Link></li>
-                <li><Link to="/recruitment" className="hover:text-foreground">Recruitment</Link></li>
-                <li><Link to="/admin" className="hover:text-foreground">Admin</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Contact</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> hello@powersconsult.com</li>
-                <li className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" /> +234 800 000 0000</li>
-                <li className="flex items-center gap-2"><Linkedin className="h-3.5 w-3.5" /> /powersconsult</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-10 border-t border-border pt-6">
-            <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} Powers Consult. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
