@@ -1,12 +1,13 @@
 import { useState, useRef } from 'react';
+import { Link } from '@tanstack/react-router';
 import {
   ArrowRight, UserPlus, FileUp, Sparkles, Layers, Briefcase, GraduationCap,
-  ShieldCheck, BadgeCheck, Search, Bell, Check, Star, Linkedin, Mail, Phone, Loader2,
+  ShieldCheck, Search, Bell, Check, Loader2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
-import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
 import { SiteNav } from '@/components/layout/SiteNav';
+import { SiteFooter } from '@/components/layout/SiteFooter';
 import { supabase } from '@/integrations/supabase/client';
 
 const services = [
@@ -22,7 +23,7 @@ const aboutBullets = [
   'Secure Candidate Profiles',
   'Multiple Career Interests',
   'Intelligent Job Matching',
-  'Trusted by Employers',
+  'HR-led Candidate Review',
 ];
 
 const steps = [
@@ -36,11 +37,10 @@ const whyItems = [
   { icon: Search, title: 'We Help You Get Discovered' },
   { icon: Layers, title: 'Multiple Job Preferences' },
   { icon: ShieldCheck, title: 'Secure CV Database' },
-  { icon: BadgeCheck, title: 'Verified Employer Network' },
   { icon: Sparkles, title: 'Faster Recruitment Process' },
   { icon: GraduationCap, title: 'Career Growth Opportunities' },
   { icon: Bell, title: 'Personalized Job Recommendations' },
-  { icon: Star, title: 'Trusted by Top Employers' },
+  { icon: Briefcase, title: 'Roles Sourced Through Our HR Work' },
 ];
 
 const careerInterests = [
