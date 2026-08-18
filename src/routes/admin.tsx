@@ -123,6 +123,81 @@ type MatchRow = {
 };
 
 function AdminPage() {
+  return <AdminPageInner />;
+}
+
+type Consultation = {
+  id: string;
+  created_at: string;
+  full_name: string;
+  work_email: string;
+  phone: string | null;
+  company_name: string;
+  company_size: string | null;
+  industry: string | null;
+  hr_needs: string[];
+  current_hr_setup: string | null;
+  message: string | null;
+  preferred_contact: string | null;
+};
+
+function ConsultationsTab({ items }: { items: Consultation[] }) {
+  if (items.length === 0) {
+    return (
+      <Card>
+        <CardContent className="py-12 text-center text-sm text-muted-foreground">
+          No consultation requests yet.
+        </CardContent>
+      </Card>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      {items.map((c) => (
+        <Card key={c.id} className="overflow-hidden">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-3 pb-3">
+            <div className="min-w-0">
+              <CardTitle className="text-base">{c.company_name}</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                {c.full_name} · {c.work_email}
+                {c.phone ? ` · ${c.phone}` : ""}
+              </p>
+            </div>
+            <Badge variant="secondary">
+              {new Date(c.created_at).toLocaleString()}
+            </Badge>
+          </CardHeader>
+          <CardContent className="grid gap-3 text-sm sm:grid-cols-2">
+            <Field label="Company size" value={c.company_size} />
+            <Field label="Industry" value={c.industry} />
+            <Field label="Current HR setup" value={c.current_hr_setup} />
+            <Field label="Preferred contact" value={c.preferred_contact} />
+            <div className="sm:col-span-2">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground">HR needs</p>
+              <div className="mt-1.5 flex flex-wrap gap-1.5">
+                {(c.hr_needs ?? []).length === 0 ? (
+                  <span className="text-muted-foreground">—</span>
+                ) : (
+                  c.hr_needs.map((n) => (
+                    <Badge key={n} variant="outline">{n}</Badge>
+                  ))
+                )}
+              </div>
+            </div>
+            {c.message ? (
+              <div className="sm:col-span-2">
+                <p className="text-xs uppercase tracking-wide text-muted-foreground">Message</p>
+                <p className="mt-1 whitespace-pre-wrap leading-relaxed">{c.message}</p>
+              </div>
+            ) : null}
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function AdminPageInner() {
   const fetchApps = useServerFn(fetchApplications);
   const fetchConsults = useServerFn(fetchConsultations);
   const fetchCompanies = useServerFn(listCompanies);
