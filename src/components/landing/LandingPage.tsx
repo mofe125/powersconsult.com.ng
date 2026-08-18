@@ -180,14 +180,17 @@ export function LandingPage() {
         <div className="relative mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--teal)]">
+                Part of the Powers HR function
+              </p>
               <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-[56px]">
-                Your Next Career <span className="text-[var(--navy)]">Opportunity</span> Starts Here
+                Talent, Sourced Through <span className="text-[var(--navy)]">Real HR Work</span>
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base leading-[1.65] text-muted-foreground sm:text-lg">
-                Powers Consult connects exceptional talent with innovative startups, technology companies, SMEs, and tech organizations.
+                Recruitment is one part of how Powers Consult builds and manages the HR function behind startups, SMEs and growing businesses — so the roles we fill are shaped by how those teams actually work.
               </p>
               <p className="mx-auto mt-4 max-w-xl text-base leading-[1.65] text-muted-foreground">
-                Create your profile, upload your CV, select multiple career interests, and get matched with opportunities that fit your skills and ambitions.
+                Join the talent pool: create your profile, upload your CV, select your career interests, and be considered as roles open across the businesses we support.
               </p>
               <div className="mx-auto mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <button
@@ -201,9 +204,16 @@ export function LandingPage() {
                   onClick={() => scrollTo('process')}
                   className="inline-flex items-center justify-center rounded-[8px] border border-border bg-white px-7 py-3.5 text-base font-semibold text-foreground transition-colors hover:border-[var(--teal)] hover:text-[var(--navy)]"
                 >
-                  Explore Opportunities
+                  How It Works
                 </button>
               </div>
+              <p className="mx-auto mt-6 max-w-xl text-sm text-muted-foreground">
+                Hiring for your business?{' '}
+                <Link to="/consultation" className="font-semibold text-[var(--navy)] underline underline-offset-4">
+                  Book an HR consultation
+                </Link>{' '}
+                — we handle recruitment as part of the wider HR function.
+              </p>
             </div>
           </div>
         </div>
