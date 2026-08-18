@@ -229,8 +229,8 @@ export function ConsultationPage() {
                   {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowRight className="h-4 w-4" />}
                   {submitting ? 'Sending…' : 'Request Consultation'}
                 </button>
-                <p className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <Mail className="h-3.5 w-3.5" /> Prefer email? Write to hello@powersconsult.com.ng
+                <p className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <Mail className="h-3.5 w-3.5" /> Prefer to reach us directly? info@powerconsult.com.ng · (+234) 9072357502
                 </p>
               </form>
             )}

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { fetchApplications } from "@/lib/admin.functions";
+import { fetchApplications, fetchConsultations } from "@/lib/admin.functions";
 import {
   listCompanies,
   upsertCompany,
@@ -46,6 +46,7 @@ import {
   Briefcase,
   Users,
   Target,
+  CalendarCheck,
 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
@@ -122,7 +123,83 @@ type MatchRow = {
 };
 
 function AdminPage() {
+  return <AdminPageInner />;
+}
+
+type Consultation = {
+  id: string;
+  created_at: string;
+  full_name: string;
+  work_email: string;
+  phone: string | null;
+  company_name: string;
+  company_size: string | null;
+  industry: string | null;
+  hr_needs: string[];
+  current_hr_setup: string | null;
+  message: string | null;
+  preferred_contact: string | null;
+};
+
+function ConsultationsTab({ items }: { items: Consultation[] }) {
+  if (items.length === 0) {
+    return (
+      <Card>
+        <CardContent className="py-12 text-center text-sm text-muted-foreground">
+          No consultation requests yet.
+        </CardContent>
+      </Card>
+    );
+  }
+  return (
+    <div className="space-y-3">
+      {items.map((c) => (
+        <Card key={c.id} className="overflow-hidden">
+          <CardHeader className="flex flex-row flex-wrap items-start justify-between gap-3 pb-3">
+            <div className="min-w-0">
+              <CardTitle className="text-base">{c.company_name}</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                {c.full_name} · {c.work_email}
+                {c.phone ? ` · ${c.phone}` : ""}
+              </p>
+            </div>
+            <Badge variant="secondary">
+              {new Date(c.created_at).toLocaleString()}
+            </Badge>
+          </CardHeader>
+          <CardContent className="grid gap-3 text-sm sm:grid-cols-2">
+            <Field label="Company size" value={c.company_size} />
+            <Field label="Industry" value={c.industry} />
+            <Field label="Current HR setup" value={c.current_hr_setup} />
+            <Field label="Preferred contact" value={c.preferred_contact} />
+            <div className="sm:col-span-2">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground">HR needs</p>
+              <div className="mt-1.5 flex flex-wrap gap-1.5">
+                {(c.hr_needs ?? []).length === 0 ? (
+                  <span className="text-muted-foreground">—</span>
+                ) : (
+                  c.hr_needs.map((n) => (
+                    <Badge key={n} variant="outline">{n}</Badge>
+                  ))
+                )}
+              </div>
+            </div>
+            {c.message ? (
+              <div className="sm:col-span-2">
+                <p className="text-xs uppercase tracking-wide text-muted-foreground">Message</p>
+                <p className="mt-1 whitespace-pre-wrap leading-relaxed">{c.message}</p>
+              </div>
+            ) : null}
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function AdminPageInner() {
   const fetchApps = useServerFn(fetchApplications);
+  const fetchConsults = useServerFn(fetchConsultations);
   const fetchCompanies = useServerFn(listCompanies);
   const fetchMatches = useServerFn(listMatches);
   const runMatch = useServerFn(runMatching);
@@ -134,17 +211,20 @@ function AdminPage() {
   const [apps, setApps] = useState<Application[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [matches, setMatches] = useState<MatchRow[]>([]);
+  const [consultations, setConsultations] = useState<Consultation[]>([]);
   const [matching, setMatching] = useState(false);
 
   async function refreshAll(pwd: string) {
-    const [a, c, m] = await Promise.all([
+    const [a, c, m, k] = await Promise.all([
       fetchApps({ data: { password: pwd } }),
       fetchCompanies({ data: { password: pwd } }),
       fetchMatches({ data: { password: pwd } }),
+      fetchConsults({ data: { password: pwd } }),
     ]);
     setApps(a.applications as unknown as Application[]);
     setCompanies(c.companies as unknown as Company[]);
     setMatches(m.matches as unknown as MatchRow[]);
+    setConsultations(k.consultations as unknown as Consultation[]);
   }
 
   async function handleLogin(e: React.FormEvent) {
@@ -251,16 +331,19 @@ function AdminPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
         <div className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <Stat icon={<CalendarCheck className="h-4 w-4" />} label="Consultations" value={consultations.length} />
           <Stat icon={<Users className="h-4 w-4" />} label="Candidates" value={apps.length} />
           <Stat icon={<Building2 className="h-4 w-4" />} label="Companies" value={companies.length} />
           <Stat icon={<Briefcase className="h-4 w-4" />} label="Open positions" value={openPositionsCount} />
-          <Stat icon={<Target className="h-4 w-4" />} label="AI matches" value={matches.length} />
         </div>
 
-        <Tabs defaultValue="matches" className="space-y-4">
+        <Tabs defaultValue="consultations" className="space-y-4">
           <TabsList className="h-11 rounded-xl bg-card/80 p-1 shadow-sm ring-1 ring-border/60 backdrop-blur">
+            <TabsTrigger value="consultations" className="rounded-lg data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white">
+              <CalendarCheck className="mr-1.5 h-3.5 w-3.5" /> Consultations
+            </TabsTrigger>
             <TabsTrigger value="matches" className="rounded-lg data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white">
-              <Sparkles className="mr-1.5 h-3.5 w-3.5" /> AI Matches
+              <Target className="mr-1.5 h-3.5 w-3.5" /> AI Matches
             </TabsTrigger>
             <TabsTrigger value="candidates" className="rounded-lg data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white">
               <Users className="mr-1.5 h-3.5 w-3.5" /> Candidates
@@ -269,6 +352,10 @@ function AdminPage() {
               <Building2 className="mr-1.5 h-3.5 w-3.5" /> Companies & Roles
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="consultations">
+            <ConsultationsTab items={consultations} />
+          </TabsContent>
 
           <TabsContent value="matches">
             <MatchesTab

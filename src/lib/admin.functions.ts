@@ -49,3 +49,23 @@ export const fetchApplications = createServerFn({ method: "POST" })
 
     return { applications: enriched };
   });
+
+export const fetchConsultations = createServerFn({ method: "POST" })
+  .inputValidator((input: { password: string }) => input)
+  .handler(async ({ data }) => {
+    const expected = process.env.ADMIN_PASSWORD;
+    if (!expected) throw new Error("Admin password not configured");
+    if (data.password !== expected) throw new Error("Invalid password");
+
+    const { supabaseAdmin } = await import(
+      "@/integrations/supabase/client.server"
+    );
+
+    const { data: rows, error } = await supabaseAdmin
+      .from("consultation_requests")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) throw new Error(error.message);
+    return { consultations: rows ?? [] };
+  });

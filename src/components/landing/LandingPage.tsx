@@ -1,12 +1,13 @@
 import { useState, useRef } from 'react';
+import { Link } from '@tanstack/react-router';
 import {
   ArrowRight, UserPlus, FileUp, Sparkles, Layers, Briefcase, GraduationCap,
-  ShieldCheck, BadgeCheck, Search, Bell, Check, Star, Linkedin, Mail, Phone, Loader2,
+  ShieldCheck, Search, Bell, Check, Loader2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
-import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
 import { SiteNav } from '@/components/layout/SiteNav';
+import { SiteFooter } from '@/components/layout/SiteFooter';
 import { supabase } from '@/integrations/supabase/client';
 
 const services = [
@@ -22,7 +23,7 @@ const aboutBullets = [
   'Secure Candidate Profiles',
   'Multiple Career Interests',
   'Intelligent Job Matching',
-  'Trusted by Employers',
+  'HR-led Candidate Review',
 ];
 
 const steps = [
@@ -36,11 +37,10 @@ const whyItems = [
   { icon: Search, title: 'We Help You Get Discovered' },
   { icon: Layers, title: 'Multiple Job Preferences' },
   { icon: ShieldCheck, title: 'Secure CV Database' },
-  { icon: BadgeCheck, title: 'Verified Employer Network' },
   { icon: Sparkles, title: 'Faster Recruitment Process' },
   { icon: GraduationCap, title: 'Career Growth Opportunities' },
   { icon: Bell, title: 'Personalized Job Recommendations' },
-  { icon: Star, title: 'Trusted by Top Employers' },
+  { icon: Briefcase, title: 'Roles Sourced Through Our HR Work' },
 ];
 
 const careerInterests = [
@@ -180,14 +180,17 @@ export function LandingPage() {
         <div className="relative mx-auto max-w-6xl px-6 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--teal)]">
+                Part of the Powers HR function
+              </p>
               <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.02em] text-foreground sm:text-5xl lg:text-[56px]">
-                Your Next Career <span className="text-[var(--navy)]">Opportunity</span> Starts Here
+                Talent, Sourced Through <span className="text-[var(--navy)]">Real HR Work</span>
               </h1>
               <p className="mx-auto mt-6 max-w-xl text-base leading-[1.65] text-muted-foreground sm:text-lg">
-                Powers Consult connects exceptional talent with innovative startups, technology companies, SMEs, and tech organizations.
+                Recruitment is one part of how Powers Consult builds and manages the HR function behind startups, SMEs and growing businesses — so the roles we fill are shaped by how those teams actually work.
               </p>
               <p className="mx-auto mt-4 max-w-xl text-base leading-[1.65] text-muted-foreground">
-                Create your profile, upload your CV, select multiple career interests, and get matched with opportunities that fit your skills and ambitions.
+                Join the talent pool: create your profile, upload your CV, select your career interests, and be considered as roles open across the businesses we support.
               </p>
               <div className="mx-auto mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <button
@@ -201,9 +204,16 @@ export function LandingPage() {
                   onClick={() => scrollTo('process')}
                   className="inline-flex items-center justify-center rounded-[8px] border border-border bg-white px-7 py-3.5 text-base font-semibold text-foreground transition-colors hover:border-[var(--teal)] hover:text-[var(--navy)]"
                 >
-                  Explore Opportunities
+                  How It Works
                 </button>
               </div>
+              <p className="mx-auto mt-6 max-w-xl text-sm text-muted-foreground">
+                Hiring for your business?{' '}
+                <Link to="/consultation" className="font-semibold text-[var(--navy)] underline underline-offset-4">
+                  Book an HR consultation
+                </Link>{' '}
+                — we handle recruitment as part of the wider HR function.
+              </p>
             </div>
           </div>
         </div>
@@ -216,16 +226,16 @@ export function LandingPage() {
             <div className="relative">
               <div className="absolute -left-3 top-6 hidden h-full w-1 rounded-full bg-[var(--teal)] lg:block" />
               <div className="rounded-[24px] bg-gradient-to-br from-[var(--navy)] to-[var(--navy-deep)] p-10 text-white shadow-xl shadow-[var(--navy)]/20">
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {[
-                    { k: '10,000+', v: 'Professionals to be onboarded' },
-                    { k: '500+', v: 'Employers to be verified' },
-                    { k: '40+', v: 'Industries to be served\u00a0' },
-                    { k: '24h', v: 'Average response time' },
+                    { k: 'One profile', v: 'Reviewed by HR professionals, not an inbox' },
+                    { k: 'Multiple interests', v: 'Be considered for more than one career path' },
+                    { k: 'Secure documents', v: 'CVs and certificates stored privately' },
+                    { k: 'Role-fit matching', v: 'Skills and experience mapped to open roles' },
                   ].map((stat, i) => (
                     <div key={i} className="rounded-[12px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
-                      <p className="text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">{stat.k}</p>
-                      <p className="mt-1 text-xs text-white/70">{stat.v}</p>
+                      <p className="text-lg font-semibold tracking-[-0.01em] text-white">{stat.k}</p>
+                      <p className="mt-1 text-xs leading-[1.5] text-white/70">{stat.v}</p>
                     </div>
                   ))}
                 </div>
@@ -234,12 +244,12 @@ export function LandingPage() {
             <div>
               <SectionLabel>ABOUT POWERS CONSULT</SectionLabel>
               <h2 className="text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl">
-                Connecting Great Talent with Great Companies
+                Recruitment Inside a Complete HR Function
               </h2>
               <div className="mt-6 space-y-4 text-base leading-[1.65] text-muted-foreground">
-                <p>At Powers Consult, we believe every talented professional deserves the right opportunity.</p>
-                <p>Our recruitment platform helps candidates showcase their experience while enabling employers to discover skilled professionals quickly and efficiently.</p>
-                <p>Whether you're a fresh graduate, an experienced professional, or an executive, we're committed to helping you find opportunities where you can thrive.</p>
+                <p>Powers Consult is an outsourced HR partner. We build and manage the people, processes, systems, documentation, compliance and advisory behind a company's workforce.</p>
+                <p>Because we sit inside that function, we understand the roles we recruit for — the structure, the expectations and the environment a candidate is joining.</p>
+                <p>Whether you're early in your career, experienced or at management level, the talent pool keeps your profile ready for the roles that genuinely fit.</p>
               </div>
               <ul className="mt-7 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {aboutBullets.map(b => (
@@ -488,45 +498,7 @@ export function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-6xl px-6 py-12 sm:px-8">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <PowerConsultLogo size="md" />
-              <p className="mt-4 max-w-xs text-sm leading-[1.65] text-muted-foreground">
-                Connecting exceptional talent with innovative organizations.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Platform</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li><button onClick={() => scrollTo('process')} className="hover:text-foreground">How it works</button></li>
-                <li><button onClick={() => scrollTo('register')} className="hover:text-foreground">Join</button></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Company</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li><button onClick={() => scrollTo('about')} className="hover:text-foreground">About</button></li>
-                <li><a href="#" className="hover:text-foreground">Careers</a></li>
-                <li><a href="#" className="hover:text-foreground">Privacy</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Contact</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> hello@powersconsult.com</li>
-                <li className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" /> +234 800 000 0000</li>
-                <li className="flex items-center gap-2"><Linkedin className="h-3.5 w-3.5" /> /powersconsult</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 sm:flex-row">
-            <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Powers Consult. All rights reserved.</p>
-            <p className="text-xs text-muted-foreground">Built for talented professionals everywhere.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <Toaster />
     </div>
