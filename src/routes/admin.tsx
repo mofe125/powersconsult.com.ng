@@ -124,6 +124,7 @@ type MatchRow = {
 
 function AdminPage() {
   const fetchApps = useServerFn(fetchApplications);
+  const fetchConsults = useServerFn(fetchConsultations);
   const fetchCompanies = useServerFn(listCompanies);
   const fetchMatches = useServerFn(listMatches);
   const runMatch = useServerFn(runMatching);
@@ -135,17 +136,20 @@ function AdminPage() {
   const [apps, setApps] = useState<Application[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
   const [matches, setMatches] = useState<MatchRow[]>([]);
+  const [consultations, setConsultations] = useState<Consultation[]>([]);
   const [matching, setMatching] = useState(false);
 
   async function refreshAll(pwd: string) {
-    const [a, c, m] = await Promise.all([
+    const [a, c, m, k] = await Promise.all([
       fetchApps({ data: { password: pwd } }),
       fetchCompanies({ data: { password: pwd } }),
       fetchMatches({ data: { password: pwd } }),
+      fetchConsults({ data: { password: pwd } }),
     ]);
     setApps(a.applications as unknown as Application[]);
     setCompanies(c.companies as unknown as Company[]);
     setMatches(m.matches as unknown as MatchRow[]);
+    setConsultations(k.consultations as unknown as Consultation[]);
   }
 
   async function handleLogin(e: React.FormEvent) {
@@ -252,16 +256,19 @@ function AdminPage() {
 
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
         <div className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <Stat icon={<CalendarCheck className="h-4 w-4" />} label="Consultations" value={consultations.length} />
           <Stat icon={<Users className="h-4 w-4" />} label="Candidates" value={apps.length} />
           <Stat icon={<Building2 className="h-4 w-4" />} label="Companies" value={companies.length} />
           <Stat icon={<Briefcase className="h-4 w-4" />} label="Open positions" value={openPositionsCount} />
-          <Stat icon={<Target className="h-4 w-4" />} label="AI matches" value={matches.length} />
         </div>
 
-        <Tabs defaultValue="matches" className="space-y-4">
+        <Tabs defaultValue="consultations" className="space-y-4">
           <TabsList className="h-11 rounded-xl bg-card/80 p-1 shadow-sm ring-1 ring-border/60 backdrop-blur">
+            <TabsTrigger value="consultations" className="rounded-lg data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white">
+              <CalendarCheck className="mr-1.5 h-3.5 w-3.5" /> Consultations
+            </TabsTrigger>
             <TabsTrigger value="matches" className="rounded-lg data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white">
-              <Sparkles className="mr-1.5 h-3.5 w-3.5" /> AI Matches
+              <Target className="mr-1.5 h-3.5 w-3.5" /> AI Matches
             </TabsTrigger>
             <TabsTrigger value="candidates" className="rounded-lg data-[state=active]:bg-[var(--navy)] data-[state=active]:text-white">
               <Users className="mr-1.5 h-3.5 w-3.5" /> Candidates
@@ -270,6 +277,10 @@ function AdminPage() {
               <Building2 className="mr-1.5 h-3.5 w-3.5" /> Companies & Roles
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="consultations">
+            <ConsultationsTab items={consultations} />
+          </TabsContent>
 
           <TabsContent value="matches">
             <MatchesTab
