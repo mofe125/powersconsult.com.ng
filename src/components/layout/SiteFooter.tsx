@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { Mail } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
 
 export function SiteFooter() {
@@ -28,8 +28,14 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5" />
-                <a href="mailto:hello@powersconsult.com.ng" className="hover:text-foreground">
-                  hello@powersconsult.com.ng
+                <a href="mailto:info@powerconsult.com.ng" className="hover:text-foreground">
+                  info@powerconsult.com.ng
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-3.5 w-3.5" />
+                <a href="tel:+2349072357502" className="hover:text-foreground">
+                  (+234) 9072357502
                 </a>
               </li>
             </ul>
