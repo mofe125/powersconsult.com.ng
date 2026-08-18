@@ -226,16 +226,16 @@ export function LandingPage() {
             <div className="relative">
               <div className="absolute -left-3 top-6 hidden h-full w-1 rounded-full bg-[var(--teal)] lg:block" />
               <div className="rounded-[24px] bg-gradient-to-br from-[var(--navy)] to-[var(--navy-deep)] p-10 text-white shadow-xl shadow-[var(--navy)]/20">
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {[
-                    { k: '10,000+', v: 'Professionals to be onboarded' },
-                    { k: '500+', v: 'Employers to be verified' },
-                    { k: '40+', v: 'Industries to be served\u00a0' },
-                    { k: '24h', v: 'Average response time' },
+                    { k: 'One profile', v: 'Reviewed by HR professionals, not an inbox' },
+                    { k: 'Multiple interests', v: 'Be considered for more than one career path' },
+                    { k: 'Secure documents', v: 'CVs and certificates stored privately' },
+                    { k: 'Role-fit matching', v: 'Skills and experience mapped to open roles' },
                   ].map((stat, i) => (
                     <div key={i} className="rounded-[12px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur">
-                      <p className="text-2xl font-bold tracking-[-0.02em] text-white sm:text-3xl">{stat.k}</p>
-                      <p className="mt-1 text-xs text-white/70">{stat.v}</p>
+                      <p className="text-lg font-semibold tracking-[-0.01em] text-white">{stat.k}</p>
+                      <p className="mt-1 text-xs leading-[1.5] text-white/70">{stat.v}</p>
                     </div>
                   ))}
                 </div>
@@ -244,12 +244,12 @@ export function LandingPage() {
             <div>
               <SectionLabel>ABOUT POWERS CONSULT</SectionLabel>
               <h2 className="text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl">
-                Connecting Great Talent with Great Companies
+                Recruitment Inside a Complete HR Function
               </h2>
               <div className="mt-6 space-y-4 text-base leading-[1.65] text-muted-foreground">
-                <p>At Powers Consult, we believe every talented professional deserves the right opportunity.</p>
-                <p>Our recruitment platform helps candidates showcase their experience while enabling employers to discover skilled professionals quickly and efficiently.</p>
-                <p>Whether you're a fresh graduate, an experienced professional, or an executive, we're committed to helping you find opportunities where you can thrive.</p>
+                <p>Powers Consult is an outsourced HR partner. We build and manage the people, processes, systems, documentation, compliance and advisory behind a company's workforce.</p>
+                <p>Because we sit inside that function, we understand the roles we recruit for — the structure, the expectations and the environment a candidate is joining.</p>
+                <p>Whether you're early in your career, experienced or at management level, the talent pool keeps your profile ready for the roles that genuinely fit.</p>
               </div>
               <ul className="mt-7 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {aboutBullets.map(b => (
