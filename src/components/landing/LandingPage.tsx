@@ -488,45 +488,7 @@ export function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-6xl px-6 py-12 sm:px-8">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <PowerConsultLogo size="md" />
-              <p className="mt-4 max-w-xs text-sm leading-[1.65] text-muted-foreground">
-                Connecting exceptional talent with innovative organizations.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Platform</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li><button onClick={() => scrollTo('process')} className="hover:text-foreground">How it works</button></li>
-                <li><button onClick={() => scrollTo('register')} className="hover:text-foreground">Join</button></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Company</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li><button onClick={() => scrollTo('about')} className="hover:text-foreground">About</button></li>
-                <li><a href="#" className="hover:text-foreground">Careers</a></li>
-                <li><a href="#" className="hover:text-foreground">Privacy</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.15em] text-foreground">Contact</h4>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> hello@powersconsult.com</li>
-                <li className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" /> +234 800 000 0000</li>
-                <li className="flex items-center gap-2"><Linkedin className="h-3.5 w-3.5" /> /powersconsult</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 sm:flex-row">
-            <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Powers Consult. All rights reserved.</p>
-            <p className="text-xs text-muted-foreground">Built for talented professionals everywhere.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <Toaster />
     </div>
