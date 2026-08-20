@@ -308,6 +308,11 @@ function AdminPageInner() {
               {loginError ? (
                 <p className="text-xs text-red-300">{loginError}</p>
               ) : null}
+              {diag ? (
+                <p className="text-[10px] text-white/60">
+                  configured={String(diag.configured)} match={String(diag.match)} expectedLen={diag.expectedLength} inputLen={diag.inputLength}
+                </p>
+              ) : null}
               <Button
                 type="submit"
                 disabled={loading || !password}
