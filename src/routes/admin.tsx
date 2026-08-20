@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { fetchApplications, fetchConsultations } from "@/lib/admin.functions";
+import { fetchApplications, fetchConsultations, checkAdminPassword } from "@/lib/admin.functions";
 import {
   listCompanies,
   upsertCompany,
