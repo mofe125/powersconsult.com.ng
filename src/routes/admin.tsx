@@ -207,6 +207,7 @@ function AdminPageInner() {
   const [password, setPassword] = useState("");
   const [authed, setAuthed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
 
   const [apps, setApps] = useState<Application[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -229,12 +230,15 @@ function AdminPageInner() {
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
+    setLoginError(null);
     setLoading(true);
     try {
       await refreshAll(password);
       setAuthed(true);
     } catch (err: any) {
-      toast.error(err?.message || "Login failed");
+      const msg = err?.message || "Login failed";
+      setLoginError(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
