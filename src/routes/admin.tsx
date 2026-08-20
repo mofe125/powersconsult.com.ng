@@ -296,6 +296,9 @@ function AdminPageInner() {
                 required
                 className="border-white/15 bg-white/5 text-white placeholder:text-white/40 focus-visible:ring-[var(--teal)]"
               />
+              {loginError ? (
+                <p className="text-xs text-red-300">{loginError}</p>
+              ) : null}
               <Button
                 type="submit"
                 disabled={loading || !password}
