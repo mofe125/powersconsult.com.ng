@@ -2,6 +2,23 @@ import { createServerFn } from "@tanstack/react-start";
 
 const BUCKET = "applications";
 
+function checkPassword(input: string, expected: string | undefined) {
+  if (!expected) return { configured: false as const, match: false as const };
+  return { configured: true as const, match: input === expected };
+}
+
+export const checkAdminPassword = createServerFn({ method: "POST" })
+  .inputValidator((input: { password: string }) => input)
+  .handler(async ({ data }) => {
+    const expected = process.env.ADMIN_PASSWORD;
+    const result = checkPassword(data.password, expected);
+    return {
+      ...result,
+      expectedLength: expected?.length ?? 0,
+      inputLength: data.password.length,
+    };
+  });
+
 export const fetchApplications = createServerFn({ method: "POST" })
   .inputValidator((input: { password: string }) => input)
   .handler(async ({ data }) => {
