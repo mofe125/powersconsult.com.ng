@@ -275,8 +275,15 @@ function AdminPageInner() {
             <p className="text-sm text-white/60">Sign in to access the talent dashboard.</p>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-3">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleLogin(e);
+              }}
+              className="space-y-3"
+            >
               <Input
+                name="password"
                 type="password"
                 placeholder="Admin password"
                 value={password}
@@ -287,7 +294,7 @@ function AdminPageInner() {
               />
               <Button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !password}
                 className="w-full bg-[var(--teal)] text-[var(--navy-deep)] hover:bg-[var(--teal)]/90"
               >
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Sign in"}
