@@ -207,6 +207,7 @@ function AdminPageInner() {
   const [password, setPassword] = useState("");
   const [authed, setAuthed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
 
   const [apps, setApps] = useState<Application[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -229,12 +230,15 @@ function AdminPageInner() {
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
+    setLoginError(null);
     setLoading(true);
     try {
       await refreshAll(password);
       setAuthed(true);
     } catch (err: any) {
-      toast.error(err?.message || "Login failed");
+      const msg = err?.message || "Login failed";
+      setLoginError(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
@@ -275,8 +279,15 @@ function AdminPageInner() {
             <p className="text-sm text-white/60">Sign in to access the talent dashboard.</p>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-3">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleLogin(e);
+              }}
+              className="space-y-3"
+            >
               <Input
+                name="password"
                 type="password"
                 placeholder="Admin password"
                 value={password}
@@ -285,9 +296,12 @@ function AdminPageInner() {
                 required
                 className="border-white/15 bg-white/5 text-white placeholder:text-white/40 focus-visible:ring-[var(--teal)]"
               />
+              {loginError ? (
+                <p className="text-xs text-red-300">{loginError}</p>
+              ) : null}
               <Button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !password}
                 className="w-full bg-[var(--teal)] text-[var(--navy-deep)] hover:bg-[var(--teal)]/90"
               >
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Sign in"}
