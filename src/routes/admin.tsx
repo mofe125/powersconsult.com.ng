@@ -208,6 +208,7 @@ function AdminPageInner() {
   const [authed, setAuthed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const [diag, setDiag] = useState<{ configured?: boolean; match?: boolean; expectedLength?: number; inputLength?: number } | null>(null);
 
   const [apps, setApps] = useState<Application[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
