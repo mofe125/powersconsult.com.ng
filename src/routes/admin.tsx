@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { fetchApplications, fetchConsultations } from "@/lib/admin.functions";
+import { fetchApplications, fetchConsultations, checkAdminPassword } from "@/lib/admin.functions";
 import {
   listCompanies,
   upsertCompany,
@@ -208,6 +208,7 @@ function AdminPageInner() {
   const [authed, setAuthed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const [diag, setDiag] = useState<{ configured?: boolean; match?: boolean; expectedLength?: number; inputLength?: number } | null>(null);
 
   const [apps, setApps] = useState<Application[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -228,11 +229,19 @@ function AdminPageInner() {
     setConsultations(k.consultations as unknown as Consultation[]);
   }
 
+  const checkPwd = useServerFn(checkAdminPassword);
+
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setLoginError(null);
+    setDiag(null);
     setLoading(true);
     try {
+      const d = await checkPwd({ data: { password } });
+      setDiag(d);
+      if (!d.match) {
+        throw new Error("Invalid password");
+      }
       await refreshAll(password);
       setAuthed(true);
     } catch (err: any) {
@@ -298,6 +307,11 @@ function AdminPageInner() {
               />
               {loginError ? (
                 <p className="text-xs text-red-300">{loginError}</p>
+              ) : null}
+              {diag ? (
+                <p className="text-[10px] text-white/60">
+                  configured={String(diag.configured)} match={String(diag.match)} expectedLen={diag.expectedLength} inputLen={diag.inputLength}
+                </p>
               ) : null}
               <Button
                 type="submit"
