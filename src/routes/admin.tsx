@@ -229,11 +229,19 @@ function AdminPageInner() {
     setConsultations(k.consultations as unknown as Consultation[]);
   }
 
+  const checkPwd = useServerFn(checkAdminPassword);
+
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setLoginError(null);
+    setDiag(null);
     setLoading(true);
     try {
+      const d = await checkPwd({ data: { password } });
+      setDiag(d);
+      if (!d.match) {
+        throw new Error("Invalid password");
+      }
       await refreshAll(password);
       setAuthed(true);
     } catch (err: any) {
