@@ -3,7 +3,11 @@ import { createServerFn } from "@tanstack/react-start";
 const BUCKET = "applications";
 
 function verify(input: string) {
-  const expected = (process.env.ADMIN_PASSWORD ?? "").trim();
+  const expected = (
+    process.env.RECORDS_ACCESS_CODE ??
+    process.env.ADMIN_PASSWORD ??
+    ""
+  ).trim();
   if (!expected) throw new Error("Access code is not configured yet.");
   if (input.trim() !== expected) throw new Error("Incorrect access code.");
 }
