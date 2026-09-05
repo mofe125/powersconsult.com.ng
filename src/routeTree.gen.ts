@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RecruitmentRouteImport } from './routes/recruitment'
+import { Route as PcRecords9f2aRouteImport } from './routes/pc-records-9f2a'
 import { Route as ConsultationRouteImport } from './routes/consultation'
 import { Route as IndexRouteImport } from './routes/index'
 
 const RecruitmentRoute = RecruitmentRouteImport.update({
   id: '/recruitment',
   path: '/recruitment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PcRecords9f2aRoute = PcRecords9f2aRouteImport.update({
+  id: '/pc-records-9f2a',
+  path: '/pc-records-9f2a',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConsultationRoute = ConsultationRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/consultation': typeof ConsultationRoute
+  '/pc-records-9f2a': typeof PcRecords9f2aRoute
   '/recruitment': typeof RecruitmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/consultation': typeof ConsultationRoute
+  '/pc-records-9f2a': typeof PcRecords9f2aRoute
   '/recruitment': typeof RecruitmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/consultation': typeof ConsultationRoute
+  '/pc-records-9f2a': typeof PcRecords9f2aRoute
   '/recruitment': typeof RecruitmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/consultation' | '/recruitment'
+  fullPaths: '/' | '/consultation' | '/pc-records-9f2a' | '/recruitment'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/consultation' | '/recruitment'
-  id: '__root__' | '/' | '/consultation' | '/recruitment'
+  to: '/' | '/consultation' | '/pc-records-9f2a' | '/recruitment'
+  id: '__root__' | '/' | '/consultation' | '/pc-records-9f2a' | '/recruitment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ConsultationRoute: typeof ConsultationRoute
+  PcRecords9f2aRoute: typeof PcRecords9f2aRoute
   RecruitmentRoute: typeof RecruitmentRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/recruitment'
       fullPath: '/recruitment'
       preLoaderRoute: typeof RecruitmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pc-records-9f2a': {
+      id: '/pc-records-9f2a'
+      path: '/pc-records-9f2a'
+      fullPath: '/pc-records-9f2a'
+      preLoaderRoute: typeof PcRecords9f2aRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/consultation': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ConsultationRoute: ConsultationRoute,
+  PcRecords9f2aRoute: PcRecords9f2aRoute,
   RecruitmentRoute: RecruitmentRoute,
 }
 export const routeTree = rootRouteImport
