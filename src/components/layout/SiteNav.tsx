@@ -6,7 +6,7 @@ import { PowerConsultLogo } from '@/components/brand/PowerConsultLogo';
 const links: { label: string; to: string }[] = [
   { label: 'Home', to: '/' },
   { label: 'Recruitment', to: '/recruitment' },
-  { label: 'Admin', to: '/admin' },
+  
 ];
 
 export function SiteNav({ cta }: { cta?: { label: string; onClick: () => void } }) {
