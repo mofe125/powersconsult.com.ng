@@ -20,7 +20,7 @@ export function SiteFooter() {
               <li><Link to="/" className="hover:text-foreground">Home</Link></li>
               <li><Link to="/consultation" className="hover:text-foreground">Book an HR Consultation</Link></li>
               <li><Link to="/recruitment" className="hover:text-foreground">Recruitment & Talent Pool</Link></li>
-              <li><Link to="/admin" className="hover:text-foreground">Admin</Link></li>
+              
             </ul>
           </div>
           <div>
