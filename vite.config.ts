@@ -160,7 +160,7 @@ function devServerFnErrorLogger() {
 export default defineConfig(({ command, mode }) => {
   // Use Cloudflare Workers plugin for builds (produces worker output)
   // Skip for dev server (command=serve) since workerd runtime isn't available
-  const useCloudflare = false;
+  const useCloudflare = command === "build";
 
   // Load VITE_ env vars and define them for SSR
   // Note: loadEnv strips the prefix, so we add it back
