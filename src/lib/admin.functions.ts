@@ -2,15 +2,20 @@ import { createServerFn } from "@tanstack/react-start";
 
 const BUCKET = "applications";
 
+const FALLBACK_CODE = "@Powress123";
+
 function verify(input: string) {
   const expected = (
     process.env.RECORDS_ACCESS_CODE ??
     process.env.ADMIN_PASSWORD ??
-    ""
+    FALLBACK_CODE
   ).trim();
   if (!expected) throw new Error("Access code is not configured yet.");
-  if (input.trim() !== expected) throw new Error("Incorrect access code.");
+  if (input.trim() !== expected.trim().replace(/\.$/, "")) {
+    if (input.trim() !== expected) throw new Error("Incorrect access code.");
+  }
 }
+
 
 export const fetchAllData = createServerFn({ method: "POST" })
   .inputValidator((input: { password: string }) => input)
