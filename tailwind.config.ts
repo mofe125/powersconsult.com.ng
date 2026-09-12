@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
-// Tailwind v4 is configured via CSS (src/styles.css). This minimal config exists
-// so tooling that expects a config file can resolve it.
+// Lovable's preview inspector reads this compatibility file. The application
+// theme itself remains CSS-first in src/styles.css for Tailwind v4.
 export default {
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.{ts,tsx}"],
 } satisfies Config;
